@@ -31,6 +31,7 @@
                 <li><strong>Expressive</strong><br/> Build asynchronous applications with ease.</li>
                 <li><strong>Performant</strong><br/> 100M msgs/sec on a single node with linear scalability.</li>
                 <li><strong>Lightweight</strong><br/> Simple applications use <em>4MB</em> RSS</li>
+                <li><strong>Featured</strong><br/> Highly expressive API that integrates with Futures</li>
               </ul>
             </div>
             <div class="col-half">
@@ -45,8 +46,7 @@
 <span class="keyword">impl</span> Actor&lt;Msg&gt; for MyActor {
   <span class="keyword">fn</span> <span class="name">receive</span>(<span class="std">&amp;mut</span> <span class="self">self</span>, msg: Msg, ctx: <span class="std">&amp;mut</span> ActorCtx&lt;Msg&gt;) {
     <span class="keyword">match</span> msg {
-      <span class="name">Greet</span>(name) =&gt;
-        <span class="module-name">println!</span>(<span class="literal">"Hello {}!"</span>, name)
+      <span class="name">Greet</span>(name) =&gt; <span class="module-name">println!</span>(<span class="literal">"Hello {}!"</span>, name)
     }
   }
 }</div>

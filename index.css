@@ -91,6 +91,7 @@ strong {
 }
 
 .container {
+  min-width: 325px;
   max-width: 970px;
   margin: 0 auto;
   padding: 1rem;
@@ -106,6 +107,8 @@ strong {
     width: 80%;
     margin: 0 auto;
     float: none;
+    margin-bottom: 4rem;
+    margin-top: -2rem;
   }
 }
 
@@ -140,6 +143,7 @@ strong {
 
 #features {
   margin-top: 4rem;
+  padding: 0 1rem;
 }
 
 #features li {
@@ -154,6 +158,7 @@ strong {
   padding: 1rem;
   font-size: 14px;
   white-space: pre;
+  overflow: scroll;
 }
 
 #example .keyword {
