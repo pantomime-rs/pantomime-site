@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  publish:
+    working_directory: ~/project
+    docker:
+      - image: circleci/rust:latest
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: |
+            cargo install csi
+      - run:
+          name: Publish
+          command: |
+            version=$(git describe --tags | sed -E 's/^v//')
+
+            csi src target/dist --ext .html
+
+            if [ "$WEBSITE_REPOSITORY" != "" ]; then
+              git clone "$WEBSITE_REPOSITORY" website-repository
+              cd website-repository
+
+              git config user.email hello@jasonlongshore.com
+              git config user.name "Jason Longshore"
+
+              rm -rf *
+              cp -r ../target/dist/* .
+
+              git add -A .
+              git commit -m "Publish $version"
+              git push
+            fi
+
+workflows:
+  version: 2
+  publish:
+    jobs:
+      - publish:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
