@@ -1,0 +1,41 @@
+<h2>Streams / Overview</h2>
+
+<p>Pantomime provides a powerful streaming library that is built on top of
+  its actor API.</p>
+
+<p>Inspired by the <a href="https://www.reactive-streams.org/">Reactive Streams</a>
+  initiative, Pantomime Streams is a dynamic push-pull streaming
+  abstraction that uses actors as the primary concurrency mechanism.</p>
+
+<h4>Concepts</h4>
+
+<p>To understand Pantomime Streams, a few key concepts and terms must
+ be introduced. You'll find the following terms referenced throughout the
+ documentation.</p>
+
+<dl>
+  <dt>Stage</dt>
+  <dd>The basic building block is a <em>stage</em> which has a variable
+    number of inputs and outputs.</dd>
+
+  <dt>Source</dt>
+  <dd>An originating stage that has zero inputs and one output, its <em>downstream</em>.</dd>
+
+  <dt>Flow</dt>
+  <dd>A processing stage that has one input (<em>upstream</em>) and one output (<em>downstream</em>).</dd>
+
+  <dt>Sink</dt>
+  <dd>A terminating stage that has one input (<em>upstream</em>) and zero outputs.</dd>
+
+  <dt>Backpressure &amp; Demand</dt>
+  <dd>Downstream sends asynchronous demand signals upstream indicating that it wishes to receive more elements.
+    This prevents the producer from overloading the consumer, a concept known as <em>backpressure</em>. Efficiency
+    is retained by inserting buffers between asynchronous boundaries to amortize message passing overhead</dd>
+
+</dl>
+
+<h4></h4>
+
+
+[set doc-section streams-overview]
+[stash doc-content][require raw ../_layout.html]

@@ -1,0 +1,305 @@
+/* =================================================================
+   Reset CSS
+   ================================================================= */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* =================================================================
+   Utils
+   ================================================================= */
+
+
+
+/* =================================================================
+   Layout
+   ================================================================= */
+
+html,body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #333333;
+  font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #de1f6e;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+dl dt {
+  font-weight: bold;
+}
+
+dl dd {
+  margin-bottom: 1rem;
+}
+
+#page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#page a {
+  text-decoration: none;
+  color: #9300C4;
+}
+
+#page a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  flex-grow: 1;
+}
+
+#header, #content, #footer {
+    flex-shrink: 0;
+}
+
+.container {
+  min-width: 325px;
+  max-width: 870px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.col-half {
+  width: 50%;
+  float: left;
+}
+
+@media only screen and (max-width: 600px) {
+  .col-half {
+    width: 80%;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 4rem;
+    margin-top: -2rem;
+  }
+}
+
+#header {
+  background-color: #7b007b;
+  text-align: center;
+}
+
+#header-main-links li {
+  display: inline-block;
+  padding: 0em 1rem;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#header-main-links li a {
+  color: #FFFFFF;
+}
+
+#header-main-links li a:hover {
+  border-bottom: 2px solid #de1f6e !important;
+  text-decoration: none;
+}
+
+.page-section-root #main-section-link-root, .page-section-documentation #main-section-link-documentation {
+  border-bottom: 2px solid #de1f6e;
+  color: #FFFFFF;
+}
+
+#features {
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+#features li {
+  list-style-type: square;
+  margin-bottom: 1rem;
+}
+
+#footer {
+  padding: 2rem;
+  clear: both;
+  text-align: center;
+}
+
+
+/* =================================================================
+   Homepage
+   ================================================================= */
+
+.page-section-root #header {
+  margin-bottom: 2rem;
+}
+
+#tagline {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+#info {
+  display: flow-root;
+}
+
+#get-started {
+  margin-top: 8rem;
+  text-align: center;
+}
+
+#get-started a {
+  padding: 2rem;
+  background-color: #7b007b;
+  color: #FFF;
+  font-size: 1.2rem;
+  border: 0px;
+}
+
+
+/* =================================================================
+   Documentation
+   ================================================================= */
+
+em.code {
+  background-color: #666;
+  color: #FFF;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.1rem;
+}
+
+.doc-section-actors-overview .doc-section-link-actors-overview,
+.doc-section-actors-hierarchy .doc-section-link-actors-hierarchy,
+.doc-section-actors-ordering .doc-section-link-actors-ordering,
+.doc-section-actors-supervision .doc-section-link-actors-supervision,
+.doc-section-actors-testing .doc-section-link-actors-testing,
+.doc-section-streams-overview .doc-section-link-streams-overview,
+.doc-section-streams-stages .doc-section-link-streams-stages,
+.doc-section-streams-tcp-udp .doc-section-link-streams-tcp-udp,
+.doc-section-streams-actor-integration .doc-section-link-streams-actor-integration,
+.doc-section-streams-supervision .doc-section-link-streams-supervision,
+.doc-section-streams-testing .doc-section-link-streams-testing,
+.doc-section-integration-futures .doc-section-link-integration-futures,
+.doc-section-integration-tokio .doc-section-link-integration-tokio
+{
+  font-weight: bold;
+}
+
+
+.page-section-documentation #header {
+  margin-bottom: 2rem;
+}
+
+.doc-page {
+  display: flex;
+}
+
+.doc-nav {
+  white-space: nowrap;
+  padding: 2rem 3rem;
+}
+
+.doc-nav a {
+  display: block;
+}
+
+.doc-content {
+  flex-grow: 1;
+}
+
+.doc-nav h5 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.doc-nav h5:first-of-type {
+  margin-top: -1rem;
+}
+
+
+
+
+
+
+
+

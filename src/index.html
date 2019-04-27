@@ -1,0 +1,44 @@
+<p id="tagline">
+  <strong>Pantomime</strong> is a library for the
+    <a href="https://www.rust-lang.org/">Rust programming language</a>
+    that empowers you to build concurrent, stateful, and stream-oriented programs with ease.
+</p>
+<div id="info">
+  <div class="col-half">
+    <ul id="features">
+      <li><strong>Event Driven</strong><br/> Powered by an <a href="https://en.wikipedia.org/wiki/Actor_model">Actor-based</a> concurrency model.</li>
+      <li><strong>Stream Oriented</strong><br/> Provides an expressive, fair, and performant streaming implementation built on a dynamic push-pull model.</strong></li>
+      <li><strong>Performant</strong><br/> 100M msgs/sec on a single node with linear scalability.</li>
+      <li><strong>Lightweight</strong><br/> Applications consume as little as <em>1MB</em> RSS.</li>
+      <li><strong>Adaptable</strong><br/> Multiple built-in schedulers allow you to tune program execution to the target hardware.</li>
+    </ul>
+  </div>
+  <div class="col-half">
+
+<pre><code class="language-rust">use pantomime::prelude::*;
+
+enum Msg {
+  Greet(String)
+}
+
+struct MyActor;
+
+impl Actor&lt;Msg&gt; for MyActor {
+  fn receive(&mut self, msg: Msg, ctx: &mut ActorCtx<Msg>) {
+    match msg {
+      Greet(name) => println!("Hello {}!", name)
+    }
+  }
+}</code></pre>
+
+</div>
+
+</div>
+<div id="get-started">
+  <a href="/docs/actors/overview.html">
+    Documentation
+  </a>
+</div>
+
+[set page-section root]
+[stash content][require raw _layout.html]

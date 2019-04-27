@@ -1,0 +1,32 @@
+<h2>Actors / Overview</h2>
+
+<p>Actors are the building blocks of Pantomime. An actor is a stateful computation abstraction based on the principal
+  of message passing. When an actor receives a message, it may mutate its internal state, spawn child actors,
+  and message other actors.</p>
+
+<h4>Concepts</h4>
+
+<dl>
+  <dt>Actor</dt>
+  <dd>An actor receives messages of a specified type and processes them serially.</dd>
+
+  <dt>Dispatcher</dt>
+  <dd>A dispatcher is responsible for executing thunks of work. For example, this may include executing an actor
+    when it is messaged, or invoking a function that was previously scheduled. An actor may specify a custom
+    dispatcher if it has particular execution requirements. For instance, an actor that performs blocking I/O
+    may wish to be executed on a dispatcher that is reserved for blocking operations, to prevent starving the
+    primary dispatcher.</dd>
+
+  <dt>Mailbox</dt>
+  <dd>When an actor is messaged, the message is placed in a mailbox. By default, actors are assigned to a shard
+    to share common infrastructure and reduce memory consumption. An actor may specify a custom mailbox implementation
+    if it wishes to control the delivery semantics, for instance message priority.</dd>
+
+  <dt>Shard</dt>
+  <dd>A shard consists of a mailbox and a number of actors. The number of shards is determined at runtime by
+    configuration, but is static in that once the system has been started, the number of shards cannot change. If
+    an actor specifies a custom dispatcher or mailbox, it is placed in its own shard.</dd>
+</dl>
+
+[set doc-section actors-overview]
+[stash doc-content][require raw ../_layout.html]

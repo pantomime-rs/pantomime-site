@@ -1,0 +1,30 @@
+<h2>Integration / Futures</h2>
+
+<p>Pantomime provides integration with the <a href="https://docs.rs/futures">futures</a>
+  crate. Futures can be spawned by dispatchers, and their results can be piped to
+  actors.</p>
+
+<h4>Spawning Futures</h4>
+
+<p>Any <em class="code">Dispatcher</em> can spawn <em class="code">Future</em>s and drive
+  them to completion. The following demonstrates how to do this, using the <em class="code">spawn</em>
+  method.</p>
+
+<h4>Piping Futures</h4>
+
+<p>The <em class="code">pipe_to</em> method can be used to message the
+  result of a <em class="code">Future</em> to an actor. For example:
+
+<pre><code class="language-rust">use pantomime::prelude::*;
+
+// Note: In reality, these would be real futures / actors
+let my_actor: ActorRef<usize> = ActorRef::empty();
+let my_future = future::ok(42);
+
+context.spawn_future(
+  my_future.pipe_to(my_actor)
+);
+</code></pre>
+
+[set doc-section integration-futures]
+[stash doc-content][require raw ../_layout.html]
