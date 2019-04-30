@@ -8,7 +8,9 @@
 
 <dl>
   <dt>Actor</dt>
-  <dd>An actor receives messages of a specified type and processes them serially.</dd>
+  <dd>An actor receives messages and signals, and processes them serially. Upon receipt of a message or signal,
+    it may mutate its own state and spawn other actors. Actors are lightweight -- you can have millions of them
+    on a modest system.</dd>
 
   <dt>Dispatcher</dt>
   <dd>A dispatcher is responsible for executing thunks of work. For example, this may include executing an actor
@@ -28,5 +30,87 @@
     an actor specifies a custom dispatcher or mailbox, it is placed in its own shard.</dd>
 </dl>
 
+<h4>Defining Actors</h4>
+
+<p>To define an actor, declare a struct with the state that your actor contains, and
+implement the <em class="code">Actor</em> trait for the message type that your actor can receive.</p>
+
+<h5>Receiving Messages</h5>
+
+When defining an actor, you must declare the <em class="code">receive</em> method. When an actor is
+messaged, this method will be called with the message instance.
+
+<h5>Receiving Signals</h5>
+
+An actor may also define a <em class="code">receive_signal</em> method. This can be used to react to
+lifecycle notifications. For example, when an actor is spawned, this method will be invoked with a
+<em class="code">Signal::Started</em> message.
+
+<h5>Example</h5>
+
+<p>The following example shows a simple actor that maintains a counter. When it receives a <em class="code">GetAndAdd</em>
+  message, it replies with the current value of the counter and then adds the supplied value.</p>
+
+<pre><code class="language-rust">use pantomime::prelude::*;
+
+enum CountingMsg {
+  GetAndAdd(u64, ActorRef&lt;u64&gt;)
+}
+
+struct CountingActor {
+  value: u64
+}
+
+impl Actor&lt;CountingMsg&gt; for CountingActor {
+  fn receive(&amp;mut self, msg: CountingMsg, _: ActorContext&lt;CountingMsg&gt;) {
+    match msg {
+      CountingMsg::GetAndAdd(value, reply_to) =&gt; {
+        reply_to.tell(self.value);
+        self.value += value;
+      }
+    }
+  }
+}
+</code></pre>
+
+<h4>Creating an ActorSystem</h4>
+
+<p>An <em class="code">ActorSystem</em> contains all of the machinery required to spawn and execute actors. This involves
+  spawning a small number of threads for executing the actors (related to available CPUs), a thread to handle I/O events,
+  a thread to generate timer ticks, and a thread to handle actor system events.</p>
+
+<p>A typical application will create an <em class="code">ActorSystem</em> in its <em class="code">main</em> function,
+  spawn any root actors it needs, and then invoke <em class="code">join</em> to start handling system events. For example:</p>
+
+<pre><code class="language-rust">use pantomime::prelude::*;
+
+fn main() {
+  // create an ActorSystem
+  let mut system = ActorSystem::new();
+
+  // use system.spawn(..) to spawn your root actors, e.g.
+  // system.spawn(MyActor);
+  // system.spawn(MyOtherActor);
+
+  // use this thread to handle system messages
+  system.join();
+}
+</code></pre>
+
+<h4>Spawning Actors</h4>
+
+<h5>Root</h5>
+
+<p>Root actors are top-level actors without parents. The only difference
+  from child actors is how they are spawned. Instead of calling <em class="code">spawn</em>
+  on an <em class="code">ActorContext</em>, root actors are spawned by calling <em class="code">spawn</em>
+  on an <em class="code">ActorSystem</em>.
+
+<h5>Child</h5>
+
+<p>Child actors are spawned from within other actors. To do this, <em class="code">spawn</em> is called
+  on the actor's <em class="code">ActorContext</em>.
+
+[set title Overview / Actors / Pantomime]
 [set doc-section actors-overview]
 [stash doc-content][require raw ../_layout.html]

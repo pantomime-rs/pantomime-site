@@ -1,2 +1,34 @@
+<h2>Actors / Supervision</h2>
+
+<h4>Failure &amp; Supervisors</h4>
+
+<p>If an actor panics while executing, it will be stopped. To
+facilitate this, actors must be <a href="https://doc.rust-lang.org/std/panic/trait.UnwindSafe.html">UnwindSafe</a>.</p>
+
+<p>Actors may be wrapped with <em class="code">Supervisor</em> that can
+restart the actor (resetting state) or resuming the actor (keeping state).</p>
+
+<p>The following demonstrates this feature:</p>
+
+<pre><code class="language-rust">use pantomime::prelude::*;
+
+</code></pre>
+
+<h4>Watching Actors</h4>
+
+<p>An actor may use <em class="code">ActorContext::watch</em> to be
+  notified when other actors terminate, whether due to normal termination
+  or failure.</p>
+
+<p>When an actor is terminated, all actors that are watching it are notified
+with a <em class="code">StopReason</em> signal indicating the reason why.</p>
+
+<p>The following demonstrates this feature:</p>
+
+<pre><code class="language-rust">use pantomime::prelude::*;
+
+</code></pre>
+
+[set title Supervision / Actors / Pantomime]
 [set doc-section actors-supervision]
 [stash doc-content][require raw ../_layout.html]

@@ -4,6 +4,9 @@
   crate. Futures can be spawned by dispatchers, and their results can be piped to
   actors.</p>
 
+<p class="note">Futures integration is provided by the <em class="code">futures-support</em>
+  feature, which is enabled by default.</p>
+
 <h4>Spawning Futures</h4>
 
 <p>Any <em class="code">Dispatcher</em> can spawn <em class="code">Future</em>s and drive
@@ -26,5 +29,6 @@ context.spawn_future(
 );
 </code></pre>
 
+[set title Futures / Integration / Pantomime]
 [set doc-section integration-futures]
 [stash doc-content][require raw ../_layout.html]

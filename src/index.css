@@ -234,6 +234,7 @@ dl dd {
   color: #FFF;
   font-size: 1.2rem;
   border: 0px;
+  border-radius: 0.25rem;
 }
 
 
@@ -241,13 +242,19 @@ dl dd {
    Documentation
    ================================================================= */
 
+p.note {
+  border-left: 1rem solid #7b007b;
+  padding: 1rem 2rem;
+  background-color: #FAFAFA;
+}
+
 em.code {
-  background-color: #666;
-  color: #FFF;
+  background-color: #eaeaea;
   padding: 0.1rem 0.2rem;
   border-radius: 0.1rem;
 }
 
+.doc-section-pantomime-overview .doc-section-link-pantomime-overview,
 .doc-section-actors-overview .doc-section-link-actors-overview,
 .doc-section-actors-hierarchy .doc-section-link-actors-hierarchy,
 .doc-section-actors-ordering .doc-section-link-actors-ordering,
@@ -296,10 +303,10 @@ em.code {
   margin-top: -1rem;
 }
 
+.doc-content h4, .doc-content h5 {
+  margin-top: 1rem;
+}
 
-
-
-
-
-
-
+.doc-content h4:first-of-type, .doc-content h5:first-of-type {
+  margin-top: 0;
+}

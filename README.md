@@ -23,6 +23,14 @@ To start a webserver at [http://localhost:8000](http://localhost:8000):
 python -m http.server --directory target/dist --bind localhost 8000
 ```
 
+### Prism
+
+This project uses [Prism](https://prismjs.com) for syntax highlighting of
+  example code. A custom build is created using the website's tool:
+
+* Theme: Funky
+* Languages: ONLY Rust, TOML. Make sure to remove default languages.
+
 ## License
 
 This repository is provided under the [MIT License](LICENSE).

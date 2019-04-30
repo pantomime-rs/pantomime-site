@@ -1,3 +1,18 @@
+<h2>Integration / Tokio</h2>
 
+<p>For compatibility with other libraries in the ecosystem, Pantomime's dispatchers can serve as
+  a <a href="https://github.com/tokio-rs/tokio/tree/master/tokio-executor">Tokio Executor</a>.</p>
+
+<p class="note">Tokio integration is provided by the <em class="code">tokio-support</em>
+  feature, which must be enabled in <em class="code">Cargo.toml</em>.</p>
+
+<h4>Hyper</h4>
+
+<p><a href="https://hyper.rs/">Hyper</a> is an HTTP library for the Rust language.
+  Refer to the <a href="https://github.com/pantomime-rs/pantomime/examples/http-hyper">Hyper example</a>
+  to see how you can combine Pantomime's Tokio support with Hyper to
+  provide an HTTP interface to your applications.</p>
+
+[set title Tokio / Integration / Pantomime]
 [set doc-section integration-tokio]
 [stash doc-content][require raw ../_layout.html]
