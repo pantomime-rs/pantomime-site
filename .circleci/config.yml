@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Publish
           command: |
+            set -x
             version=$(git describe --tags | sed -E 's/^v//')
 
             csi src target/dist --ext .html
