@@ -23,6 +23,11 @@ To start a webserver at [http://localhost:8000](http://localhost:8000):
 python -m http.server --directory target/dist --bind localhost 8000
 ```
 
+## Publishing
+
+To publish this website, push a tag in the format of vYYYY.MM.DD.R where
+R is the revision number for the particular day.
+
 ### Prism
 
 This project uses [Prism](https://prismjs.com) for syntax highlighting of
