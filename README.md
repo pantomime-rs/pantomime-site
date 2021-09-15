@@ -28,6 +28,9 @@ python -m http.server --directory target/dist --bind localhost 8000
 To publish this website, push a tag in the format of vYYYY.MM.DD.R where
 R is the revision number for the particular day.
 
+CircleCI will then build the project and push it to the www.pantomime.dev
+repository.
+
 ### Prism
 
 This project uses [Prism](https://prismjs.com) for syntax highlighting of
